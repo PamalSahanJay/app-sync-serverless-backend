@@ -1,0 +1,46 @@
+
+
+service: serverless-app-sync-backend
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  hello:
+    handler: src/handler.hello
+
+resources:
+  - ${file(resources.yml)}
+
+plugins:
+  - serverless-appsync-plugin
+
+custom:
+  appSync:
+    name: bookStoreAppSync
+    authenticationType: AMAZON_COGNITO_USER_POOLS
+    userPoolConfig:
+      awsRegion: us-east-1
+      defaultAction: ALLOW
+      userPoolId: !Ref cognitoUserPool
+    mappingTemplatesLocation: mapping-templates
+    mappingTemplates:
+      - type: Query
+        field: getBookById
+        dataSource: booksTable
+      - type: Mutation
+        field: createBook
+        dataSource: booksTable
+    dataSources:
+      - type: AMAZON_DYNAMODB
+        name: booksTable
+        description: booksTable
+        config:
+          tableName: !Ref bookTable
+
+
+
