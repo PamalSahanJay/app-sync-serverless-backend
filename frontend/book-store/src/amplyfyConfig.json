@@ -1,0 +1,17 @@
+{
+  "Auth": {
+    "Cognito": {
+      "region": "us-east-1",
+      "userPoolId": "us-east-1_Dev7DEEZO",
+      "userPoolClientId": "3scrns7ntgndh4168aq7240dq7",
+      "mandatorySignIn": true
+    }
+  },
+  "API": {
+    "GraphQL": {
+      "endpoint": "https://47o45l5ojjhethozb5oomec2rq.appsync-api.us-east-1.amazonaws.com/graphql",
+      "region": "us-east-1",
+      "defaultAuthMode": "userPool"
+    }
+  }
+}

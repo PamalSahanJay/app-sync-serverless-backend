@@ -47,6 +47,8 @@ Resources:
       UserPoolName: book-store-user-pool
       UsernameAttributes:
         - email
+      AutoVerifiedAttributes:
+        - email
 
   cognitoUserPoolWebClient:
     Type: AWS::Cognito::UserPoolClient
