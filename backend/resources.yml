@@ -148,6 +148,15 @@ Resources:
           ProviderName: !GetAtt cognitoUserPool.ProviderName
       IdentityPoolName: bookStoreIdentityPool
   
+  
+  cognitoIdentityRoleAttachment:
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+    Properties:
+      IdentityPoolId: !Ref cognitoIdentityPool
+      Roles: 
+        unauthenticated: !GetAtt cognitoUnAuthIamRole.Arn
+
+
   cognitoIdentityRoleAttachment:
     Type: AWS::Cognito::IdentityPoolRoleAttachment
     Properties:
@@ -169,7 +178,9 @@ Resources:
               - "sts:AssumeRoleWithWebIdentity"
             Condition:
               StringEquals:
-                "cognito-identity.amazonaws.com:aud": !Ref cognitoUserPool
+                cognito-identity.amazonaws.com:aud: !Ref cognitoIdentityPool
+              ForAnyValue:StringLike:
+                cognito-identity.amazonaws.com:amr: "*"
       Description: This is the iam role that unauth users assume
       Policies: 
         - PolicyName: "bookstore-unauth-user-policy"
@@ -178,7 +189,14 @@ Resources:
             Statement:
               - Effect: Allow
                 Action: 
-                  - appsync:GraphQL
+                  - "appsync:GraphQL"
                 Resource:
-                  - arn:aws:appsync:us-east-1:583774065306:apis/bookStoreAppSync/types/Query/fields/getBookById
+                  - "arn:aws:appsync:us-east-1:583774065306:apis/qegzsa3lurdurd3da64ldkytwm/types/Query/fields/getBookById"
       RoleName: bookstore-unauth-role
+
+  cognitoIdentityRoleAttachment:
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+    Properties:
+      IdentityPoolId: !Ref cognitoIdentityPool
+      Roles: 
+        unauthenticated: !GetAtt cognitoUnAuthIamRole.Arn

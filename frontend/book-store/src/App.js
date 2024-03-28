@@ -14,12 +14,12 @@ export default function App() {
     const book = await client.graphql({
       query: getBookById,
       variables: {
-        id: "6807560d-18da-4664-8952-8e908f8012f4"
-      }
+        id: "b43d59e2-6df1-422b-8ebd-b265df4a179f"
+      },
+      authMode: 'iam'
     })
     console.log(book)
     setBook(book)
-
   }
 
   // useEffect(() => {
@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <div>
-      <Authenticator loginMechanisms={['email']} socialProviders={['amazon', 'apple', 'facebook', 'google']} variation="modal">
+      <Authenticator loginMechanisms={['email']} socialProviders={['facebook', 'google']} variation="modal">
         {({ signOut, user }) => (
           <main>
             <h1>Hello {user.username}</h1>
@@ -58,7 +58,7 @@ export default function App() {
             </section>
             <button onClick={signOut}>Sign out</button>
           </main>
-        )}
+         )}
       </Authenticator>
     </div>
   );

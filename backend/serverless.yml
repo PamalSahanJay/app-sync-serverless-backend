@@ -1,5 +1,4 @@
 
-
 service: serverless-app-sync-backend
 
 frameworkVersion: "3"

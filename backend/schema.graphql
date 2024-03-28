@@ -9,10 +9,10 @@ type Query {
     myOrders(limit: Int!, nextToken: String): orderItemsPage!
 }
 
-type Book {
-    bookId: ID! @aws_iam
-    title: String! @aws_iam
-    description: String @aws_iam
+type Book @aws_iam @aws_cognito_user_pools{
+    bookId: ID! 
+    title: String! 
+    description: String 
     imageUrl: AWSURL 
     author: String!
     price: Float!
