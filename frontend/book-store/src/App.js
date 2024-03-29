@@ -14,7 +14,7 @@ export default function App() {
     const book = await client.graphql({
       query: getBookById,
       variables: {
-        id: "6807560d-18da-4664-8952-8e908f8012f4"
+        id: "b43d59e2-6df1-422b-8ebd-b265df4a179f"
       }
     })
     console.log(book)
