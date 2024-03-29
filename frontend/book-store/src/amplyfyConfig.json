@@ -2,14 +2,14 @@
   "Auth": {
     "Cognito": {
       "region": "us-east-1",
-      "userPoolId": "us-east-1_Dev7DEEZO",
-      "userPoolClientId": "3scrns7ntgndh4168aq7240dq7",
+      "userPoolId": "us-east-1_WrejThnmH",
+      "userPoolClientId": "5brcprnle8uho0e274rjf172f1",
       "mandatorySignIn": true
     }
   },
   "API": {
     "GraphQL": {
-      "endpoint": "https://47o45l5ojjhethozb5oomec2rq.appsync-api.us-east-1.amazonaws.com/graphql",
+      "endpoint": "https://665omxrzt5fihfhp4rfxzxiige.appsync-api.us-east-1.amazonaws.com/graphql",
       "region": "us-east-1",
       "defaultAuthMode": "userPool"
     }
